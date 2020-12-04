@@ -30,14 +30,6 @@ Super.prototype.newPage = async function (...hooks) {
   }
 
   await result.evaluateOnNewDocument(() => {
-    Object.defineProperty(navigator, 'languages', {
-      get: () => ['en-US', 'en'],
-    });
-
-    Object.defineProperty(navigator, 'webdriver', {
-      get: () => false,
-    });
-
     window.σ = {
       $: function (selector, context = document) {
         return context.querySelector(selector);
@@ -159,11 +151,6 @@ Super.prototype.newPage = async function (...hooks) {
 
         return null;
       },
-    };
-
-    window.chrome = {
-      app: {},
-      runtime: {},
     };
   });
 
